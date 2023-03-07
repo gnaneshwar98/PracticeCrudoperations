@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Practice.Models.ProductEditorModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ProductEditor";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Product Editor</h1>
+
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="ProductEditor" asp-controller="Product" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ProductName"></label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" type="number" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Save Product" />
+                <a href="@Url.Action("ProductsList","Product")" class="btn btn-secondary">Back To List</a>
+            </div>
+
+            <input asp-for="ProductId" />
+        </form>
+    </div>
+</div>
+
+<style type="text/css">
+    .form-group {
+        margin-top: 20px !important;
+    }
+</style>
